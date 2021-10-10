@@ -1,0 +1,11 @@
+beautifulsoup4==4.4.1
+selenium==3.141.0
+pandas==1.2.4
+numpy
+streamlit==1.0.0
+urllib3==1.26.7
+tensorflow==2.6.0
+keras==2.6.0
+matplotlib==3.3.4
+webdriver-manager
+chromedriver-autoinstaller
