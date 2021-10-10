@@ -8,9 +8,6 @@ from keras.models import load_model
 from tensorflow import keras
 from keras.preprocessing import image
 import os
-# import requests as req
-import urllib.request
-from bs4 import BeautifulSoup as BS
 
 st.image('solar-park-g59755c796_1280.jpg',width=600)
 st.write('')
@@ -121,25 +118,27 @@ if choice == '세종':
 st.write('')
 st.write('')
 st.write('')
+
 Image = st.file_uploader('하늘 사진을 올려주세요 (현재 스트림릿의 문제로 이미지 업로드만 됩니다.)',type=['jpg','jpeg','png'])
-st.write(Image)
+
 if Image is not None:
-    files = os.listdir('/app/testhack')
-    st.write(files)
-    st.image(Image, width=180)
-    my_model = load_model('my_model.h5')
-    img_data = image.load_img('example4.jpg', target_size=(180,180))
-    img_data
+    st.write(Image)
+    # files = os.listdir('/app/testhack')
+    # st.write(files)
+    # st.image(Image, width=180)
+    # my_model = load_model('my_model.h5')
+    # img_data = image.load_img('example4.jpg', target_size=(180,180))
+    # img_data
 
-    img_data = tf.expand_dims(img_data, 0)
+    # img_data = tf.expand_dims(img_data, 0)
 
-    predictions = my_model.predict(img_data)
-    score = tf.nn.softmax(predictions[0])
-    filenames = ['맑은 날', '흐린 날', '일몰 혹은 일출']
-    st.write(
-        "해당 사진의 날씨는 {} 입니다."
-        .format(filenames[np.argmax(score)])
-    )
+    # predictions = my_model.predict(img_data)
+    # score = tf.nn.softmax(predictions[0])
+    # filenames = ['맑은 날', '흐린 날', '일몰 혹은 일출']
+    # st.write(
+    #     "해당 사진의 날씨는 {} 입니다."
+    #     .format(filenames[np.argmax(score)])
+    # )
 
 st.write('')
 st.write('')
