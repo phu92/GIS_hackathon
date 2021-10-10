@@ -7,6 +7,8 @@ import pandas as pd
 from selenium import webdriver
 import chromedriver_autoinstaller
 
+path = chromedriver_autoinstaller.install()
+
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--headless') 
 chrome_options.add_argument('--no-sandbox')
@@ -16,7 +18,7 @@ chrome_options.add_argument('window-size=1920x1080') # 창크기 조절
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument("User_Agent: Mozilla/5.0 \(Windows NT 6.1\) AppleWebKit/537.36 \(KHTML, like Gecko\) Chrome/41.0.2228.0 Safari/537.36")
 
-driver = webdriver.Chrome(chromedriver_autoinstaller.install(),chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path=path,chrome_options=chrome_options)
 
 url = 'https://bd.kma.go.kr/kma2020/fs/energySelect1.do?pageNum=5&menuCd=F050701000'
 driver.get(url)
