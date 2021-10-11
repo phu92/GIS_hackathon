@@ -46,12 +46,14 @@
 	하늘 사진만 업로드해도 일사량과 태양광 발전 적합도를 출력하는 것을 목표로 하고 있습니다. 
 
 4. 태양광 탄소 배출량 계산
-	한국 전력의 전기 생산 1KWh당 탄소 발생량 (0.424g)
+	한국 전력의 전기 생산 1KWh당 탄소 발생량 (0.424kg)
 	2012년 산림청 국립산림과학원의 정책브리핑 자료 ('우리나라 소나무 30년생 1ha의 숲은 매년 10.8톤의 CO2를 흡수함으로써,')
 	그리고 IPCC의(기후 변화에 관한 정부간 협의체) 발전원별 생애주기 탄소배출량 자료를 환산하여 계산하였습니다.
 	
 =================================================================================
-
+정부 브리핑 자료 - 제5차 신재생에너지 기본계획 참조
+신재생에너지원별 발전 비중 목표~
+https://www.knrec.or.kr/download/file_download.aspx?key=1682&gubun=notice&div=FILE_NM2
 
 저작권이 없는 이미지 및 폰트를 사용하였습니다.
 폰트 : 카페24 써라운드
@@ -61,3 +63,4 @@
 	태양광 : https://www.publicdomainpictures.net/en/view-image.php?image=268930&picture=solar-energy-business
 	풍력 : https://pixabay.com/illustrations/wind-energy-socket-environmental-4091082/
 	수소 : https://commons.wikimedia.org/wiki/File:RH2cycle.png
+	수력 : https://pixabay.com/es/photos/represa-r%C3%ADo-agua-paisaje-poder-929406/

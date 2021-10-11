@@ -311,9 +311,13 @@ st.sidebar.write('')
 st.sidebar.write('')
 st.sidebar.write('')
 
+if st.sidebar.button('수력'):
+    st.sidebar.image('수력 발전.jpg')
 if st.sidebar.button('지열'):
     st.sidebar.image('지열 발전.jpg')
 if st.sidebar.button('태양광'):
     st.sidebar.image('태양광 발전.jpg')
 if st.sidebar.button('풍력'):
     st.sidebar.image('풍력 발전.jpg')
+if st.sidebar.button('수소'):
+    st.sidebar.image('수소에너지.jpg')
