@@ -7,16 +7,17 @@ import tensorflow as tf
 from keras.models import load_model
 from tensorflow import keras
 from keras.preprocessing import image
-import os
 
 st.image('solar-park-g59755c796_1280.jpg',width=600)
 st.write('')
 st.write('')
 #========================일사량 불러오기==============================
 region = ['지역을 선택해주세요','전국','서울','광주','부산','대전','대구','인천','울산',
-'전남','전북','경남','경북','강원도','경기도','제주','세종']
+'전남','전북','경남','경북','강원도','경기도','제주','세종','충남','충북']
 
-choice = st.selectbox('일사량을 알고싶은 지역을 선택해주세요.', region)
+choice = st.selectbox('일사량을 알고싶은 지역을 선택해주세요. (첫 로딩시 30초 정도 소요 됩니다.)', region)
+if choice is not None:
+    st.write('본 정보는 한국전력거래소에 등록된 설비용량 기준입니다. ')
 
 if choice == '전국':
     st.write('일사량 정보를 불러오는 중입니다.')
@@ -114,6 +115,18 @@ if choice == '세종':
     csv_conv = 세종.to_csv().encode('utf-8-sig')
     st.dataframe(세종)
     st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+if choice == '충남':
+    st.write('일사량 정보를 불러오는 중입니다.')
+    from craw import 충남
+    csv_conv = 충남.to_csv().encode('utf-8-sig')
+    st.dataframe(충남)
+    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+if choice == '충북':
+    st.write('충청북도는 발전 설비가 없어 출력되지 않습니다.')
+    # from craw import 충북
+    # csv_conv = 충북.to_csv().encode('utf-8-sig')
+    # st.dataframe(충북)
+    # st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
 #==========================이미지 인식 부====================================
 st.write('')
 st.write('')
@@ -257,3 +270,16 @@ sorted_result = sorted(result.items(), key=lambda x: x[1], reverse=True)
 if selected_item_1 != '선택지를 골라주세요!' and st.sidebar.button('결과 출력!'):
     st.sidebar.write(f'당신과 어울리는 신재생 에너지는')
     st.sidebar.write(f'☆☆☆　{sorted_result[0][0]}입니다!　☆☆☆')
+    st.sidebar.write('↓ 아래에서 신재생 에너지를 확인해보세요')
+
+st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
+st.sidebar.write('')
+
+if st.sidebar.button('지열'):
+    st.sidebar.image('지열 발전.jpg')
+if st.sidebar.button('태양광'):
+    st.sidebar.image('태양광 발전.jpg')
+if st.sidebar.button('풍력'):
+    st.sidebar.image('풍력 발전.jpg')
