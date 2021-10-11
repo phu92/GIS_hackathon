@@ -23,10 +23,10 @@ driver = webdriver.Chrome(executable_path=path,chrome_options=chrome_options)
 url = 'http://bd.kma.go.kr/kma2020/fs/energySelect1.do?pageNum=5&menuCd=F050701000'
 driver.get(url)
 today = driver.find_element_by_id("thToday").text
-print(today)
+# print(today)
 element = driver.find_element_by_xpath('//*[@id="toEnergy"]/tr[1]').text.split()
 
-print(element)
+# print(element)
 
 times_1 = []
 elects_1 = []
@@ -115,5 +115,5 @@ time.sleep(1)
 전북 = information(전라북도)
 전남 = information(전라남도)
 
-print(서울)
+# print(서울)
 driver.quit()
