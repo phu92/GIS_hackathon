@@ -35,7 +35,7 @@ elect_1 =[]
 sun_1 = []
 tempe = []
 time.sleep(1)
-for i in range(5,22):
+for i in range(1,25):
     tr = str(i)
     string = driver.find_element_by_xpath(f'//*[@id="toEnergy"]/tr[{i}]').text.split()
     times_1.append(string[0])
@@ -79,7 +79,7 @@ def information(area):
     elects = []
     sun = []
     tempe = []
-    for i in range(5,22):
+    for i in range(1,25):
 
         tr = str(i)
         string = driver.find_element_by_xpath(f'//*[@id="toEnergy"]/tr[{i}]').text.split()

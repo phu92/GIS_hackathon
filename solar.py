@@ -8,7 +8,7 @@ from keras.models import load_model
 from tensorflow import keras
 from keras.preprocessing import image
 import time
-
+# https://ibb.co/sqzfGhf
 st.image('solar-park-g59755c796_1280.jpg')
 st.write('')
 st.write('')
@@ -22,7 +22,7 @@ if choice is not None:
 
 solar_power = 0
 def solar_cal(sol_cal):
-    solar_power = float(sol_cal.iloc[16][1])
+    solar_power = float(sol_cal.iloc[23][1])
     if st.button('탄소배출량 계산!'):
         st.write('========================================================')
         st.write(f'해당 지역의 오늘 태양광 누적 발전 예상량은 {solar_power}KWh 입니다.')
@@ -37,8 +37,19 @@ if choice != '지역을 선택해주세요':
         from craw import*
 if choice == '전국':
     csv_conv = my_df.to_csv().encode('utf-8-sig')
-    all_solar = float(my_df.iloc[16][1])
+    all_solar = float(my_df.iloc[23][1])
+    if st.button('시각 데이터 확인'):
+        chart_df = my_df.iloc[:,1]
+        chart_df = chart_df.reset_index(drop = True)
+        chart_df = chart_df.astype(float)
+        st.area_chart(chart_df,width=720)
+
+        chart_df2 = my_df.iloc[:,2]
+        chart_df2 = chart_df2.reset_index(drop = True)
+        chart_df2 = chart_df2.astype(float)
+        st.line_chart(chart_df2,width=720)
     st.dataframe(my_df)
+
     if st.button('탄소배출량 계산!'):
         st.write('========================================================')
         st.write(f'오늘 전국의 태양광 누적 발전 예상량은 {all_solar}KWh 입니다.')
@@ -94,6 +105,7 @@ if choice == '전남':
     from craw import 전남
     csv_conv = 전남.to_csv().encode('utf-8-sig')
     st.dataframe(전남)
+    solar_cal(전남)
     if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
         st.success('저장이 완료 되었습니다!')
 if choice == '울산':
@@ -195,7 +207,7 @@ if Image is not None:
 st.write('')
 st.write('')
 st.write('')
-model_ex = st.selectbox('모델 예시 입니다.',('예제를 선택해 주세요.','example1.jpg','example2.jpg','example3.jpg','example4.jpg','사용한 코드'))
+model_ex = st.selectbox('모델 예시 입니다.',('예제를 선택해 주세요.','images\example1.jpg','images\example2.jpg','images\example3.jpg','images\example4.jpg','사용한 코드'))
 if model_ex == '예제를 선택해 주세요.':
     st.write('')
 elif model_ex == '사용한 코드':
@@ -316,12 +328,12 @@ st.sidebar.write('')
 st.sidebar.write('')
 
 if st.sidebar.button('수력'):
-    st.sidebar.image('수력 발전.jpg')
+    st.sidebar.image('images\수력 발전.jpg')
 if st.sidebar.button('지열'):
-    st.sidebar.image('지열 발전.jpg')
+    st.sidebar.image('images\지열 발전.jpg')
 if st.sidebar.button('태양광'):
-    st.sidebar.image('태양광 발전.jpg')
+    st.sidebar.image('images\태양광 발전.jpg')
 if st.sidebar.button('풍력'):
-    st.sidebar.image('풍력 발전.jpg')
+    st.sidebar.image('images\풍력 발전.jpg')
 if st.sidebar.button('수소'):
-    st.sidebar.image('수소에너지.jpg')
+    st.sidebar.image('images\수소에너지.jpg')
