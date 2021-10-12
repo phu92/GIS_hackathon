@@ -7,6 +7,7 @@ import tensorflow as tf
 from keras.models import load_model
 from tensorflow import keras
 from keras.preprocessing import image
+import time
 
 st.image('solar-park-g59755c796_1280.jpg')
 st.write('')
@@ -31,9 +32,10 @@ def solar_cal(sol_cal):
         st.write('========================================================')
     return 1
     
+if choice != '지역을 선택해주세요':
+    with st.spinner('태양광 데이터를 불러오는 중 입니다.'):
+        from craw import*
 if choice == '전국':
-    st.write('정보를 불러오는 중입니다.')
-    from craw import my_df
     csv_conv = my_df.to_csv().encode('utf-8-sig')
     all_solar = float(my_df.iloc[16][1])
     st.dataframe(my_df)
@@ -44,124 +46,126 @@ if choice == '전국':
         st.write(f'30년생 소나무 {int((all_solar*0.424)/6.6)} 그루가 1년 동안 흡수해야하는 양입니다.')
         st.write(f'태양광 발전이 오늘 하루 탄소발생량 약 {np.round(np.round(all_solar*0.424,2) - np.round(all_solar*0.424/8.33,2),2)}Kg을 절감했습니다.')
         st.write('========================================================')
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '제주':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 제주
     csv_conv = 제주.to_csv().encode('utf-8-sig')
     st.dataframe(제주)
     solar_cal(제주)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '경기도':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 경기
     csv_conv = 경기.to_csv().encode('utf-8-sig')
     st.dataframe(경기)
     solar_cal(경기)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '강원도':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 강원
     csv_conv = 강원.to_csv().encode('utf-8-sig')
     st.dataframe(강원)
     solar_cal(강원)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '경북':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 경북
     csv_conv = 경북.to_csv().encode('utf-8-sig')
     st.dataframe(경북)
     solar_cal(경북)    
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '경남':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 경남
     csv_conv = 경남.to_csv().encode('utf-8-sig')
     st.dataframe(경남)
     solar_cal(경남)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '전북':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 전북
     csv_conv = 전북.to_csv().encode('utf-8-sig')
     st.dataframe(전북)
     solar_cal(전북)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '전남':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 전남
     csv_conv = 전남.to_csv().encode('utf-8-sig')
     st.dataframe(전남)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '울산':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 울산
     csv_conv = 울산.to_csv().encode('utf-8-sig')
     st.dataframe(울산)
     solar_cal(울산)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '인천':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 인천
     csv_conv = 인천.to_csv().encode('utf-8-sig')
     st.dataframe(인천)
     solar_cal(인천)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '대구':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 대구
     csv_conv = 대구.to_csv().encode('utf-8-sig')
     st.dataframe(대구)
     solar_cal(대구)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '대전':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 대전
     csv_conv = 대전.to_csv().encode('utf-8-sig')
     st.dataframe(대전)
     solar_cal(대전)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '부산':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 부산
     csv_conv = 부산.to_csv().encode('utf-8-sig')
     st.dataframe(부산)
     solar_cal(부산)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '광주':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 광주
     csv_conv = 광주.to_csv().encode('utf-8-sig')
     st.dataframe(광주)
     solar_cal(광주)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '서울':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 서울
     csv_conv = 서울.to_csv().encode('utf-8-sig')
     st.dataframe(서울)
     solar_cal(서울)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '세종':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 세종
     csv_conv = 세종.to_csv().encode('utf-8-sig')
     st.dataframe(세종)
     solar_cal(세종)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '충남':
-    st.write('정보를 불러오는 중입니다.')
     from craw import 충남
     csv_conv = 충남.to_csv().encode('utf-8-sig')
     st.dataframe(충남)
     solar_cal(충남)
-    st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    if st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        st.success('저장이 완료 되었습니다!')
 if choice == '충북':
     st.write('충청북도는 발전 설비가 없어 출력되지 않습니다.')
     # from craw import 충북
     # csv_conv = 충북.to_csv().encode('utf-8-sig')
     # st.dataframe(충북)
-    # st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv')
+    #if  st.download_button('표 데이터를 저장할 수 있습니다.',data=csv_conv,mime='text/csv'):
+        # st.success('저장이 완료 되었습니다!')
 #==========================이미지 인식 부====================================
 st.write('')
 st.write('')

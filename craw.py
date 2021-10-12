@@ -6,6 +6,7 @@ import time
 import pandas as pd
 from selenium import webdriver
 import chromedriver_autoinstaller
+import streamlit as st
 
 path = chromedriver_autoinstaller.install()
 
