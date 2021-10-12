@@ -7,19 +7,29 @@ import pandas as pd
 from selenium import webdriver
 import chromedriver_autoinstaller
 import streamlit as st
-
-path = chromedriver_autoinstaller.install()
+import os
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless') 
-chrome_options.add_argument('--no-sandbox')
-#--disable-extensions 확장프로그램 무력화
-chrome_options.add_argument('window-size=1920x1080') # 창크기 조절
-chrome_options.add_argument("disable-gpu") #gpu 사용X
-chrome_options.add_argument('--disable-dev-shm-usage')
-# chrome_options.add_argument("User_Agent: Mozilla/5.0 \(Windows NT 6.1\) AppleWebKit/537.36 \(KHTML, like Gecko\) Chrome/41.0.2228.0 Safari/537.36")
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-gpu")
+chrome_options.add_argument("--no-sandbox")
 
-driver = webdriver.Chrome(executable_path=path,chrome_options=chrome_options)
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+# path = chromedriver_autoinstaller.install()
+
+# chrome_options = webdriver.ChromeOptions()
+# chrome_options.add_argument('--headless') 
+# chrome_options.add_argument('--no-sandbox')
+# #--disable-extensions 확장프로그램 무력화
+# chrome_options.add_argument('window-size=1920x1080') # 창크기 조절
+# chrome_options.add_argument("disable-gpu") #gpu 사용X
+# chrome_options.add_argument('--disable-dev-shm-usage')
+# # chrome_options.add_argument("User_Agent: Mozilla/5.0 \(Windows NT 6.1\) AppleWebKit/537.36 \(KHTML, like Gecko\) Chrome/41.0.2228.0 Safari/537.36")
+
+# driver = webdriver.Chrome(executable_path=path,chrome_options=chrome_options)
 
 url = 'http://bd.kma.go.kr/kma2020/fs/energySelect1.do?pageNum=5&menuCd=F050701000'
 driver.get(url)
@@ -119,22 +129,22 @@ time.sleep(1)
 # print(서울)
 driver.quit()
 
-# csv_conv = 울산.to_csv().encode('utf-8-sig')
-my_df.to_csv('database\my_df.csv',index=False)
-서울.to_csv('database\서울.csv',index=False)
-울산.to_csv('database\울산.csv',index=False)
-광주.to_csv('database\광주.csv',index=False)
-울산.to_csv('database\울산.csv',index=False)
-부산.to_csv('database\부산.csv',index=False)
-대전.to_csv('database\대전.csv',index=False)
-인천.to_csv('database\인천.csv',index=False)
-전남.to_csv('database\전남.csv',index=False)
-전북.to_csv('database\전북.csv',index=False)
-경남.to_csv('database\경남.csv',index=False)
-경북.to_csv('database\경북.csv',index=False)
-강원.to_csv('database\강원.csv',index=False)
-경기.to_csv('database\경기.csv',index=False)
-제주.to_csv('database\제주.csv',index=False)
-세종.to_csv('database\세종.csv',index=False)
-충남.to_csv('database\충남.csv',index=False)
-# 충북.to_csv('database\충북.csv',index=False)
+# # csv_conv = 울산.to_csv().encode('utf-8-sig')
+# my_df.to_csv('database\my_df.csv',index=False)
+# 서울.to_csv('database\서울.csv',index=False)
+# 울산.to_csv('database\울산.csv',index=False)
+# 광주.to_csv('database\광주.csv',index=False)
+# 울산.to_csv('database\울산.csv',index=False)
+# 부산.to_csv('database\부산.csv',index=False)
+# 대전.to_csv('database\대전.csv',index=False)
+# 인천.to_csv('database\인천.csv',index=False)
+# 전남.to_csv('database\전남.csv',index=False)
+# 전북.to_csv('database\전북.csv',index=False)
+# 경남.to_csv('database\경남.csv',index=False)
+# 경북.to_csv('database\경북.csv',index=False)
+# 강원.to_csv('database\강원.csv',index=False)
+# 경기.to_csv('database\경기.csv',index=False)
+# 제주.to_csv('database\제주.csv',index=False)
+# 세종.to_csv('database\세종.csv',index=False)
+# 충남.to_csv('database\충남.csv',index=False)
+# # 충북.to_csv('database\충북.csv',index=False)
