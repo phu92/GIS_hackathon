@@ -207,7 +207,7 @@ if Image is not None:
 st.write('')
 st.write('')
 st.write('')
-model_ex = st.selectbox('모델 예시 입니다.',('예제를 선택해 주세요.','images\example1.jpg','images\example2.jpg','images\example3.jpg','images\example4.jpg','사용한 코드'))
+model_ex = st.selectbox('모델 예시 입니다.',('예제를 선택해 주세요.','example1.jpg','example2.jpg','example3.jpg','example4.jpg','사용한 코드'))
 if model_ex == '예제를 선택해 주세요.':
     st.write('')
 elif model_ex == '사용한 코드':
@@ -246,6 +246,7 @@ list_3 = ['선택지를 골라주세요!','봄','여름','가을','겨울','다 
 list_4 = ['선택지를 골라주세요!','독서','음악감상','운동','드라이브','게임']
 list_5 = ['선택지를 골라주세요!','은하수를 여행하는 히치하이커','아이로봇','매트릭스','아이언맨','월-E']
 st.sidebar.header('나와 어울리는 신재생 에너지는?')
+st.sidebar.image('outline_battery_unknown_black_48dp.png')
 selected_item_1 = st.sidebar.selectbox("코로나가 끝나 놀러 가고 싶은 당신은?", list_1)
 selected_item_2 = st.sidebar.selectbox("당신의 음악 취향은?",list_2)
 selected_item_3 = st.sidebar.selectbox("좋아하는 계절은?",list_3)
@@ -328,12 +329,12 @@ st.sidebar.write('')
 st.sidebar.write('')
 
 if st.sidebar.button('수력'):
-    st.sidebar.image('images\수력 발전.jpg')
+    st.sidebar.image('수력 발전.jpg')
 if st.sidebar.button('지열'):
-    st.sidebar.image('images\지열 발전.jpg')
+    st.sidebar.image('지열 발전.jpg')
 if st.sidebar.button('태양광'):
-    st.sidebar.image('images\태양광 발전.jpg')
+    st.sidebar.image('태양광 발전.jpg')
 if st.sidebar.button('풍력'):
-    st.sidebar.image('images\풍력 발전.jpg')
+    st.sidebar.image('풍력 발전.jpg')
 if st.sidebar.button('수소'):
-    st.sidebar.image('images\수소에너지.jpg')
+    st.sidebar.image('수소에너지.jpg')
